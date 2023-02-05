@@ -11,6 +11,7 @@ import abhishekg.pkart.adapter.ProductAdapter
 import abhishekg.pkart.databinding.FragmentHomeBinding
 import abhishekg.pkart.model.AddProductModel
 import abhishekg.pkart.model.CategoryModel
+import abhishekg.pkart.roomdb.AppDatabase
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat.getCategory
@@ -42,6 +43,7 @@ class HomeFragment : Fragment() {
 
         getSliderImage()
         getProducts()
+
 
         return binding.root
     }
@@ -78,6 +80,11 @@ class HomeFragment : Fragment() {
                     list.add(data!!)
                 }
                 binding.productRecycler.adapter = ProductAdapter(requireContext(), list)
+                val dao = AppDatabase.getInstance(requireContext()).productDao()
+                dao.getAllProducts().observe(requireActivity()){
+                    binding.productRecycler.adapter = ProductAdapter(requireContext(), list)
+
+                }
             }
     }
 
@@ -91,6 +98,7 @@ class HomeFragment : Fragment() {
                     list.add(data!!)
                 }
                 binding.categoryRecycler.adapter = CategoryAdapter(requireContext(), list)
+
             }
     }
 

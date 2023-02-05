@@ -71,10 +71,7 @@ class CheckoutActivity : AppCompatActivity() {
         binding.confirmOrderButton.setOnClickListener{
             if(binding.COD.isChecked())
             {
-               // Toast.makeText(this, "You selected cod", Toast.LENGTH_SHORT).show()
                 changeOrderId()
-//                addOrder(pnlist, pqlist,pplist)
-                //uploadData()
             }
             else
             {                Toast.makeText(this, "Please select COD. Online payment is currently facing issues", Toast.LENGTH_LONG).show()
