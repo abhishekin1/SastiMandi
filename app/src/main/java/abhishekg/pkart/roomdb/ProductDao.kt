@@ -26,6 +26,9 @@ interface ProductDao {
     @Query("SELECT productQuan FROM products WHERE productId = :id")
     fun getQuan(id : String) : String
 
+    @Query("SELECT COUNT(*) FROM products")
+    fun getSize() : String
+
 
 
 

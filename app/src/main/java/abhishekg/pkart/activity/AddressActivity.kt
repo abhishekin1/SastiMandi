@@ -1,5 +1,6 @@
 package abhishekg.pkart.activity
 
+import abhishekg.pkart.MainActivity
 import abhishekg.pkart.R
 import abhishekg.pkart.databinding.ActivityAddressBinding
 import abhishekg.pkart.databinding.ActivityOtpactivityBinding
@@ -9,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.core.content.ContentProviderCompat.requireContext
 
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -21,11 +23,16 @@ class AddressActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding= ActivityAddressBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        if(intent.hasExtra("CameFromMore")){
+            binding.proceed.text="Update Details"
+        }
 
         preferences=this.getSharedPreferences("userr", MODE_PRIVATE)
         loadUserInfo()
 
+
         binding.proceed.setOnClickListener{
+
             validateData(
                 binding.userNumber.text.toString(),
                 binding.userName.text.toString(),
@@ -58,17 +65,24 @@ class AddressActivity : AppCompatActivity() {
         Firebase.firestore.collection("users")
             .document(preferences.getString("numberr", "")!!)
             .update(map).addOnSuccessListener {
-                val list= intent.getStringArrayListExtra("productIds")
-                for(data in list!!){
-                    Log.i("cartfrag", data)
+                if(intent.hasExtra("CameFromMore")){
+                    val intent = Intent(this, MainActivity::class.java)
+                    intent.putExtra("goToMore", "abd")
+                    startActivity(intent)
+                }else{
+                    val list= intent.getStringArrayListExtra("productIds")
+                    for(data in list!!){
+                        Log.i("cartfrag", data)
 
+                    }
+                    val intent=(Intent(this, CheckoutActivity::class.java))
+                    intent.putExtra("userName", name)
+                    intent.putExtra("productIds", list )
+                    intent.putExtra("totalCost", intent.getStringExtra("totalCost") )
+                    intent.putExtra("addressFromAddressActivity", "${binding.userStreet.text}, ${binding.userCity.text}, ${binding.userState.text}, ${binding.userPincode.text}")
+                    startActivity(intent)
                 }
 
-                val intent=(Intent(this, CheckoutActivity::class.java))
-                intent.putExtra("productIds", list )
-                intent.putExtra("totalCost", intent.getStringExtra("totalCost") )
-                intent.putExtra("addressFromAddressActivity", "${binding.userStreet.text}, ${binding.userCity.text}, ${binding.userState.text}, ${binding.userPincode.text}")
-                startActivity(intent)
 
 
             }.addOnFailureListener{
@@ -84,10 +98,9 @@ class AddressActivity : AppCompatActivity() {
 
         Firebase.firestore.collection("users")
             .document(preferences.getString("numberr", "")!!)
-//            .document("8840158254")
             .get().addOnSuccessListener {
 //                binding.userName.setText(it.getString("userName"))
-                binding.userName.setText(preferences.getString("namee", "")!!)
+                binding.userName.setText(it.getString("userName"))
 //                binding.userNumber.setText(it.getString("userPhoneNumber"))
                 binding.userNumber.setText(preferences.getString("numberr", "null")!!)
                 binding.userStreet.setText(it.getString("street"))
@@ -96,4 +109,5 @@ class AddressActivity : AppCompatActivity() {
                 binding.userPincode.setText(it.getString("pincode"))
             }
     }
+
 }

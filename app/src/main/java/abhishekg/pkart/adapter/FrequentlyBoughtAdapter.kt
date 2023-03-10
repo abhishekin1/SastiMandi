@@ -1,32 +1,36 @@
 package abhishekg.pkart.adapter
 
 import abhishekg.pkart.activity.ProductDetailsActivity
+import abhishekg.pkart.databinding.LayoutFrequentlyBoughtItemBinding
 import abhishekg.pkart.databinding.LayoutProductItemBinding
 import abhishekg.pkart.model.AddProductModel
 import abhishekg.pkart.roomdb.AppDatabase
 import abhishekg.pkart.roomdb.ProductModel
 import android.content.Context
 import android.content.Intent
-import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.observe
+import kotlinx.coroutines.GlobalScope
 
 
-class ProductAdapter(val context: Context, val list: ArrayList<AddProductModel>) :
-    RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
+class FrequentlyBoughtAdapter(val context: Context, val list: ArrayList<AddProductModel>) :
+    RecyclerView.Adapter<FrequentlyBoughtAdapter.ProductViewHolder>() {
 
-    inner class ProductViewHolder(val binding: LayoutProductItemBinding) :
+    inner class ProductViewHolder(val binding: LayoutFrequentlyBoughtItemBinding) :
         RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
-        val binding = LayoutProductItemBinding.inflate(LayoutInflater.from(context), parent, false)
+        val binding = LayoutFrequentlyBoughtItemBinding.inflate(LayoutInflater.from(context), parent, false)
         return ProductViewHolder(binding)
     }
 
@@ -36,13 +40,8 @@ class ProductAdapter(val context: Context, val list: ArrayList<AddProductModel>)
         Glide.with(context).load(data.productCoverImg).into((holder.binding.imageView2))
         holder.binding.textView.text = data.productName
         holder.binding.textView3.text = data.productCategory
-//        holder.binding.textView4.text = data.productMrp
-        holder.binding.textView4.apply {
-            text = "₹"+data.productMrp
-            paintFlags = paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
-
-        }
-        holder.binding.button.text = "₹"+data.productSp
+        holder.binding.textView4.text = data.productMrp
+        holder.binding.button.text = data.productSp
         holder.itemView.setOnClickListener {
             val intent = Intent(context, ProductDetailsActivity::class.java)
             intent.putExtra("id", list[position].productId)

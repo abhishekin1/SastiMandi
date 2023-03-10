@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import abhishekg.pkart.R
+import abhishekg.pkart.activity.AddressActivity
 import abhishekg.pkart.adapter.AllOrderAdapter
 import abhishekg.pkart.databinding.FragmentMoreBinding
 import abhishekg.pkart.model.AllOrderModel
@@ -31,26 +32,14 @@ class MoreFragment : Fragment() {
 
         list= ArrayList()
 
-        val preferences= this.activity?.getSharedPreferences("userr", AppCompatActivity.MODE_PRIVATE)
-        if (preferences != null) {
-            Log.i("morefrag",preferences.getString("namee", "").toString())
+        loadOrders()
+        loadUserInfo()
+        binding.editIcon.setOnClickListener{
+            val intent = Intent(requireContext(), AddressActivity::class.java)
+            intent.putExtra("CameFromMore", "abd")
+            startActivity(intent)
         }
 
-        Firebase.firestore.collection("allOrders")
-            .whereEqualTo(
-                "userId",
-                preferences?.getString("numberr", "")
-            )
-            .get().addOnSuccessListener {
-            list.clear()
-            for (doc in it){
-                val data = doc.toObject(AllOrderModel::class.java)
-                list.add(data)
-
-            }
-            binding.recyclerView.adapter= AllOrderAdapter(list, requireActivity())
-
-        }
 
         binding.btnSignOut.setOnClickListener {
             FirebaseAuth.getInstance().signOut()
@@ -59,7 +48,42 @@ class MoreFragment : Fragment() {
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent)
         }
+
         return binding.root
+
+    }
+
+    private fun loadUserInfo() {
+
+        val preferences= this.activity?.getSharedPreferences("userr", AppCompatActivity.MODE_PRIVATE)
+        Firebase.firestore.collection("users")
+            .document(preferences?.getString("numberr", "")!!)
+            .get().addOnSuccessListener {
+
+                binding.userName.setText(it.getString("userName"))
+                binding.userMobile.setText(it.getString("userPhoneNumber"))
+                binding.userAddress.setText("${it.getString("street")}, ${(it.getString("city"))}, ${it.getString("state")}, ${it.getString("pincode")}")
+            }
+    }
+
+    private fun loadOrders() {
+        val preferences= this.activity?.getSharedPreferences("userr", AppCompatActivity.MODE_PRIVATE)
+
+        Firebase.firestore.collection("allOrders")
+            .whereEqualTo(
+                "userId",
+                preferences?.getString("numberr", "")
+            )
+            .get().addOnSuccessListener {
+                list.clear()
+                for (doc in it){
+                    val data = doc.toObject(AllOrderModel::class.java)
+                    list.add(data)
+
+                }
+                binding.recyclerView.adapter= AllOrderAdapter(list, requireActivity())
+
+            }
 
     }
 

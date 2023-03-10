@@ -37,7 +37,7 @@ RecyclerView.Adapter<CartAdapter.CartViewHolder>(){
     override fun onBindViewHolder(holder: CartViewHolder, position: Int) {
         Glide.with(context).load(list[position].productImage).into(holder.binding.imageView4)
         holder.binding.textView11.text= list[position].productName
-        holder.binding.textView12.text= list[position].productSp
+        holder.binding.textView12.text= "₹"+list[position].productSp
         holder.binding.textViewQuan.text= list[position].productQuan
 
         holder.itemView.setOnClickListener{
@@ -70,9 +70,6 @@ RecyclerView.Adapter<CartAdapter.CartViewHolder>(){
             }else{
                 Toast.makeText(context, "Select at least 1 product quantity 🤔 ", Toast.LENGTH_SHORT).show()
             }
-
-
-
         }
 
     }

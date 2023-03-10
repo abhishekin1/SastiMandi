@@ -4,6 +4,7 @@ import abhishekg.pkart.R
 import abhishekg.pkart.adapter.CategoryProductAdapter
 import abhishekg.pkart.adapter.ProductAdapter
 import abhishekg.pkart.model.AddProductModel
+import abhishekg.pkart.roomdb.AppDatabase
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -33,7 +34,12 @@ class CatagoryActivity : AppCompatActivity() {
                 }
                 Log.i("hh",list.size.toString())
                 val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
-                recyclerView.adapter = CategoryProductAdapter(this, list)
+                recyclerView.adapter = ProductAdapter(this, list)
+                val dao = AppDatabase.getInstance(this).productDao()
+                dao.getAllProducts().observe(this){
+                    recyclerView.adapter = ProductAdapter(this, list)
+
+                }
             }
     }
 }

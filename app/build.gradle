@@ -40,6 +40,9 @@ android {
 }
 
 dependencies {
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.google.firebase:firebase-messaging-ktx:23.0.2'
+    implementation 'com.google.firebase:firebase-database-ktx:20.1.0'
     def nav_version = "2.5.3"
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'
@@ -85,6 +88,8 @@ dependencies {
 
     //gif
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.22'
+
+
 
 
 

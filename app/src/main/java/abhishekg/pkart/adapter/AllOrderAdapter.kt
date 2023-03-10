@@ -45,7 +45,7 @@ class AllOrderAdapter(var list: ArrayList<AllOrderModel>, val context: Context)
             holder.binding.llProductDetails.visibility = GONE
             holder.binding.showOrderDetailsTv.text="\uD83D\uDC47 Show Order Details \uD83D\uDC47"
         }
-        holder.binding.showOrderDetailsTv.setOnClickListener{
+        holder.binding.cardView.setOnClickListener{
             list[position].expand = !list[position].expand
             notifyDataSetChanged()
         }

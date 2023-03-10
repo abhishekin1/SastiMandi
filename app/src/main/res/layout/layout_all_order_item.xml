@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardView"
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="6dp"
@@ -13,7 +14,7 @@
         android:padding="6dp"
         android:animateLayoutChanges="true"
         android:layout_width="match_parent"
-        android:background="@color/colorSecondary"
+        android:background="@color/white"
         android:layout_height="match_parent">
         <TextView
             android:id="@+id/orderId"
@@ -36,6 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Current Status"
+            android:visibility="invisible"
             android:layout_marginTop="4dp"
             app:layout_constraintStart_toStartOf="@id/statusButton"
             app:layout_constraintEnd_toEndOf="@id/statusButton"

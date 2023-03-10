@@ -3,6 +3,7 @@ package abhishekg.pkart.activity
 import abhishekg.pkart.MainActivity
 import abhishekg.pkart.R
 import abhishekg.pkart.databinding.ActivityCheckoutBinding
+import abhishekg.pkart.model.NotificationModel
 import abhishekg.pkart.roomdb.AppDatabase
 import abhishekg.pkart.roomdb.ProductModel
 import android.content.Intent
@@ -17,11 +18,9 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.observe
-import androidx.navigation.findNavController
-import androidx.navigation.ui.NavigationUI
+import com.google.firebase.database.*
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
@@ -130,7 +129,8 @@ class CheckoutActivity : AppCompatActivity() {
         data["totalMoney"]= total.toString()
         data["status"]="Ordered"
         data["userId"]= preferences.getString("numberr","")!!
-        data["userName"]= preferences.getString("namee", "hi")!!
+        data["userName"]= intent.getStringExtra("userName").toString()
+//        data["userName"]= preferences.getString("namee", "hi")!!
         val firestore = Firebase.firestore.collection("allOrders")
         //val key= firestore.document().id
         data["orderId"] = curOrderId.toString()
@@ -139,14 +139,22 @@ class CheckoutActivity : AppCompatActivity() {
 
         firestore.document(curOrderId.toString()).set(data).addOnSuccessListener {
             showDialog()
-            builder.window?.setBackgroundDrawableResource(android.R.color.transparent)
-            builder.show()
+            addNotificationToFirebase(preferences.getString("numberr","")!!, "We recieved order with order id $curOrderId", intent.getStringExtra("userName").toString())
 
             deleteFromCart()
             Toast.makeText(this,"We got your order", Toast.LENGTH_SHORT).show()
         }.addOnFailureListener{
             Toast.makeText(this,"kuch to gdbd h", Toast.LENGTH_SHORT).show()
         }
+
+
+    }
+
+    private fun addNotificationToFirebase(userId: String, content: String, userName: String) {
+        var newnNoti=NotificationModel (userId,content, userName)
+        var db: FirebaseDatabase= FirebaseDatabase.getInstance()
+        val reference: DatabaseReference = db.getReference("notifications")
+        reference.child(userId).setValue(newnNoti)
 
 
     }

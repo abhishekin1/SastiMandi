@@ -5,39 +5,40 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import abhishekg.pkart.R
 import abhishekg.pkart.adapter.CategoryAdapter
 import abhishekg.pkart.adapter.ProductAdapter
 import abhishekg.pkart.databinding.FragmentHomeBinding
 import abhishekg.pkart.model.AddProductModel
 import abhishekg.pkart.model.CategoryModel
 import abhishekg.pkart.roomdb.AppDatabase
+import android.util.Log
+import android.widget.SearchView
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.NotificationCompat.getCategory
-import androidx.navigation.fragment.findNavController
-import com.bumptech.glide.Glide
+import androidx.core.content.ContentProviderCompat.requireContext
+import com.bumptech.glide.load.engine.executor.GlideExecutor.UncaughtThrowableStrategy.LOG
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import java.util.ArrayList
+import java.util.*
 
-
+var filter=0;
+var etext=""
 class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
+//    public lateinit var etext: String
+
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         binding= FragmentHomeBinding.inflate(layoutInflater)
+        etext="";
 
-//        val preference= requireContext().getSharedPreferences("info", AppCompatActivity.MODE_PRIVATE)
-//        if(preference.getBoolean("isCart", false)){
-////            findNavController().navigate(R.id.action_homeFragment_to_cartFragment)
-//        }
 
         getCategories()
 
@@ -45,8 +46,12 @@ class HomeFragment : Fragment() {
         getProducts()
 
 
+
+
         return binding.root
     }
+
+
 
     private fun getSliderImage() {
         Firebase.firestore.collection("slider")
@@ -63,11 +68,6 @@ class HomeFragment : Fragment() {
             }.addOnFailureListener{
                 Toast.makeText(requireContext(), "something went wrong", Toast.LENGTH_SHORT).show()
             }
-
-//        Firebase.firestore.collection("slider").document("item")
-//            .get().addOnSuccessListener {
-//                Glide.with(requireContext()).load(it.get("img")).into(binding.sliderImage)
-//            }
     }
 
     private fun getProducts() {
@@ -79,14 +79,64 @@ class HomeFragment : Fragment() {
                     val data = doc.toObject(AddProductModel::class.java)
                     list.add(data!!)
                 }
-                binding.productRecycler.adapter = ProductAdapter(requireContext(), list)
                 val dao = AppDatabase.getInstance(requireContext()).productDao()
                 dao.getAllProducts().observe(requireActivity()){
-                    binding.productRecycler.adapter = ProductAdapter(requireContext(), list)
+                    Log.w("mypp", "1");
+                    filterList(list);
 
                 }
+                binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
+                    androidx.appcompat.widget.SearchView.OnQueryTextListener {
+
+                    override fun onQueryTextSubmit(query: String?): Boolean {
+                        return false
+                    }
+
+                    override fun onQueryTextChange(newText: String?): Boolean {
+                        if(newText!=null){
+                            etext=newText;
+                        }
+                        filterList(list)
+                        return false
+                    }
+                })
+
+
+
+
             }
     }
+
+
+    private fun filterList(list: ArrayList<AddProductModel>) {
+        val filteredList = ArrayList<AddProductModel>()
+        filteredList.clear()
+        for(item in list){
+             if(item.productName!!.lowercase().contains(etext!!.lowercase())){
+//                 Toast.makeText(requireContext(), text, Toast.LENGTH_SHORT).show()
+                 filteredList.add(item)
+             }
+        }
+        if(etext!=""){
+            binding.imageSlider.visibility= View.GONE
+            binding.catRL.visibility= View.GONE
+            binding.categoryRecycler.visibility= View.GONE
+
+        }else{
+            binding.imageSlider.visibility= View.VISIBLE
+            binding.catRL.visibility= View.VISIBLE
+            binding.categoryRecycler.visibility= View.VISIBLE
+        }
+
+
+            productListShowRecyclear(filteredList)
+
+    }
+    private fun productListShowRecyclear(list: ArrayList<AddProductModel>) {
+        binding.productRecycler.adapter = ProductAdapter(requireContext(), list)
+
+    }
+
 
     private fun getCategories() {
         val list = ArrayList<CategoryModel>()
@@ -103,4 +153,8 @@ class HomeFragment : Fragment() {
     }
 
 
+
+
+
 }
+

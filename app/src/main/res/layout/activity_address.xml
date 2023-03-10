@@ -13,7 +13,6 @@
         android:layout_margin="8dp"
         android:layout_width="match_parent"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:enabled="false"
         android:layout_height="wrap_content">
 
         <com.google.android.material.textfield.TextInputEditText
