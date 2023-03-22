@@ -26,8 +26,9 @@ class NotificationService : Service() {
     var i=0
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        val preferences= this.getSharedPreferences("userr", MODE_PRIVATE)
+        var preferences= this.getSharedPreferences("userr", MODE_PRIVATE)
         Toast.makeText(this,preferences.getString("numberr","lkl")!!,Toast.LENGTH_SHORT).show()
+
         startBackground()
 
         var db: FirebaseDatabase = FirebaseDatabase.getInstance()
@@ -38,6 +39,7 @@ class NotificationService : Service() {
 //
                 val content= dataSnapshot.child("content").getValue()?.toString() ?: ""
                 val userName= dataSnapshot.child("userName").getValue()?.toString() ?: ""
+                Log.e("hiiii", "data change in notification")
                 if(i!=0){
                     showNotification(userName,content)
                 }
@@ -53,9 +55,6 @@ class NotificationService : Service() {
 
         return START_STICKY
 
-//        return START_REDELIVER_INTENT
-//        return START_NOT_STICKY
-//        return super.onStartCommand(intent, flags, startId)
     }
 
 
