@@ -29,23 +29,13 @@ SASTI MANDI is a real-life e-commerce project for purchasing vegetables and dair
 
 <div align="center">
   <img src="https://i.ibb.co/SrMsPhM/Screenshot-20230624-075121.png" alt="Login Screen" width="200" height="400">
-  <br>
-  <em>Login Screen</em>
-</div>
-
-<br>
-
-<div align="center">
-  <img src="screenshots/profile_orders_screen.png" alt="Profile and Orders Screen" width="200" height="400">
-  <br>
-  <em>Profile and Orders Screen</em>
-</div>
-
-<br>
-
-<div align="center">
+  <img src="https://i.ibb.co/k8DQVjJ/Screenshot-20230624-090203.png" alt="Profile and Orders Screen" width="200" height="400">
   <img src="https://i.ibb.co/0J2yxN5/Screenshot-20230624-075154.png" alt="OTP Screen" width="200" height="400">
-  <br>
+</div>
+
+<div align="center">
+  <em>Login Screen</em>
+  <em>Profile and Orders Screen</em>
   <em>OTP Screen</em>
 </div>
 
@@ -53,23 +43,13 @@ SASTI MANDI is a real-life e-commerce project for purchasing vegetables and dair
 
 <div align="center">
   <img src="https://i.ibb.co/h2FqqSN/Screenshot-20230624-090048.png" alt="Home Page Activity" width="200" height="400">
-  <br>
-  <em>Home Page Activity</em>
-</div>
-
-<br>
-
-<div align="center">
   <img src="https://i.ibb.co/F8d1gdq/Screenshot-20230624-090102.png" alt="Cart Activity" width="200" height="400">
-  <br>
-  <em>Cart Activity</em>
+  <img src="https://i.ibb.co/8Xd6428/Screenshot-20230624-090138.png" alt="Address Activity" width="200" height="400">
 </div>
 
-<br>
-
 <div align="center">
-  <img src="https://i.ibb.co/8Xd6428/Screenshot-20230624-090138.png" alt="Address Activity" width="200" height="400">
-  <br>
+  <em>Home Page Activity</em>
+  <em>Cart Activity</em>
   <em>Address Activity</em>
 </div>
 
@@ -77,7 +57,9 @@ SASTI MANDI is a real-life e-commerce project for purchasing vegetables and dair
 
 <div align="center">
   <img src="https://i.ibb.co/r5t1qMx/Screenshot-20230624-090150.png" alt="Payment Mode Activity" width="200" height="400">
-  <br>
+</div>
+
+<div align="center">
   <em>Payment Mode Activity</em>
 </div>
 
