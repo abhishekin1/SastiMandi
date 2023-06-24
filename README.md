@@ -27,41 +27,18 @@ SASTI MANDI is a real-life e-commerce project for purchasing vegetables and dair
 
 ## Screenshots
 
-<div align="center">
-  <img src="https://i.ibb.co/SrMsPhM/Screenshot-20230624-075121.png" alt="Login Screen" width="200" height="400">
-  <img src="https://i.ibb.co/k8DQVjJ/Screenshot-20230624-090203.png" alt="Profile and Orders Screen" width="200" height="400">
-  <img src="https://i.ibb.co/0J2yxN5/Screenshot-20230624-075154.png" alt="OTP Screen" width="200" height="400">
-</div>
+| Login Screen                      | Profile and Orders Screen         | OTP Screen                        |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| ![Login Screen](https://i.ibb.co/SrMsPhM/Screenshot-20230624-075121.png) | ![Profile and Orders Screen](https://i.ibb.co/k8DQVjJ/Screenshot-20230624-090203.png) | ![OTP Screen](https://i.ibb.co/0J2yxN5/Screenshot-20230624-075154.png) |
 
-<div align="center">
-  <em>Login Screen</em>
-  <em>Profile and Orders Screen</em>
-  <em>OTP Screen</em>
-</div>
+| Home Page Activity                | Cart Activity                     | Address Activity                  |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| ![Home Page Activity](https://i.ibb.co/h2FqqSN/Screenshot-20230624-090048.png) | ![Cart Activity](https://i.ibb.co/F8d1gdq/Screenshot-20230624-090102.png) | ![Address Activity](https://i.ibb.co/8Xd6428/Screenshot-20230624-090138.png) |
 
-<br>
+| Payment Mode Activity             |
+| --------------------------------- |
+| ![Payment Mode Activity](https://i.ibb.co/r5t1qMx/Screenshot-20230624-090150.png) |
 
-<div align="center">
-  <img src="https://i.ibb.co/h2FqqSN/Screenshot-20230624-090048.png" alt="Home Page Activity" width="200" height="400">
-  <img src="https://i.ibb.co/F8d1gdq/Screenshot-20230624-090102.png" alt="Cart Activity" width="200" height="400">
-  <img src="https://i.ibb.co/8Xd6428/Screenshot-20230624-090138.png" alt="Address Activity" width="200" height="400">
-</div>
-
-<div align="center">
-  <em>Home Page Activity</em>
-  <em>Cart Activity</em>
-  <em>Address Activity</em>
-</div>
-
-<br>
-
-<div align="center">
-  <img src="https://i.ibb.co/r5t1qMx/Screenshot-20230624-090150.png" alt="Payment Mode Activity" width="200" height="400">
-</div>
-
-<div align="center">
-  <em>Payment Mode Activity</em>
-</div>
 
 ## Instructions
 
