@@ -40,33 +40,3 @@ SASTI MANDI is a real-life e-commerce project for purchasing vegetables and dair
 | ![Payment Mode Activity](https://i.ibb.co/r5t1qMx/Screenshot-20230624-090150.png) | ![Push Notifications](https://i.ibb.co/vJqbLF7/Whats-App-Image-2023-06-24-at-09-58-40.jpg) | ![Admin Order Panel](https://i.ibb.co/PwPcfzB/Whats-App-Image-2023-06-24-at-09-58-41.jpg) |
 
 
-
-## Instructions
-
-1. Clone the repository: `git clone https://github.com/your-username/sasti-mandi.git`
-
-2. Open the project in Android Studio.
-
-3. Build and run the app on an Android device or emulator.
-
-4. Sign up or log in using your phone number and OTP.
-
-5. Browse and add products to your cart.
-
-6. Proceed to checkout and select your address.
-
-7. Choose a payment mode and complete the payment using the provided options.
-
-8. Receive real-time order updates through push notifications.
-
-9. Enjoy your fresh vegetables and dairy products!
-
-For more information, please refer to the [documentation](https://github.com/your-username/sasti-mandi/wiki).
-
-## Contributions
-
-Contributions to the SASTI MANDI Android App project are welcome. If you find any bugs or would like to suggest improvements, please open an issue or submit a pull request on the [GitHub repository](https://github.com/your-username/sasti-mandi).
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
