@@ -2,6 +2,11 @@
 
 SASTI MANDI is a real-life e-commerce project for purchasing vegetables and dairy products. The project consists of an admin app and a user app, both built for the Android platform using Kotlin and XML.
 
+
+<a href="https://drive.google.com/file/d/1O6VG9xq5_B73XhwXVLD30AnuIpgmBmOW/view?usp=sharing">
+  <img src="https://icon-library.com/images/download-png-icon/download-png-icon-6.jpg" alt="Download App" width="50" height="50">
+</a> Download App
+
 ## Technologies Used
 
 - Kotlin
