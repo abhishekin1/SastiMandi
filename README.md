@@ -27,17 +27,18 @@ SASTI MANDI is a real-life e-commerce project for purchasing vegetables and dair
 
 ## Screenshots
 
-| Login Screen                      | Profile and Orders Screen         | OTP Screen                        |
+| Login Screen                      | OTP Screen                        | Home Page Activity                |
 | --------------------------------- | --------------------------------- | --------------------------------- |
-| ![Login Screen](https://i.ibb.co/SrMsPhM/Screenshot-20230624-075121.png) | ![Profile and Orders Screen](https://i.ibb.co/k8DQVjJ/Screenshot-20230624-090203.png) | ![OTP Screen](https://i.ibb.co/0J2yxN5/Screenshot-20230624-075154.png) |
+| ![Login Screen](https://i.ibb.co/SrMsPhM/Screenshot-20230624-075121.png) | ![OTP Screen](https://i.ibb.co/0J2yxN5/Screenshot-20230624-075154.png) | ![Home Page Activity](https://i.ibb.co/h2FqqSN/Screenshot-20230624-090048.png) |
 
-| Home Page Activity                | Cart Activity                     | Address Activity                  |
+| Cart Activity                     | Profile and Orders Screen         | Address Activity                  |
 | --------------------------------- | --------------------------------- | --------------------------------- |
-| ![Home Page Activity](https://i.ibb.co/h2FqqSN/Screenshot-20230624-090048.png) | ![Cart Activity](https://i.ibb.co/F8d1gdq/Screenshot-20230624-090102.png) | ![Address Activity](https://i.ibb.co/8Xd6428/Screenshot-20230624-090138.png) |
+| ![Cart Activity](https://i.ibb.co/F8d1gdq/Screenshot-20230624-090102.png) | ![Profile and Orders Screen](https://i.ibb.co/k8DQVjJ/Screenshot-20230624-090203.png) | ![Address Activity](https://i.ibb.co/8Xd6428/Screenshot-20230624-090138.png) |
 
-| Payment Mode Activity             |
-| --------------------------------- |
-| ![Payment Mode Activity](https://i.ibb.co/r5t1qMx/Screenshot-20230624-090150.png) |
+| Payment Mode Activity             | Push Notifications                | Admin Order Panel                 |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| ![Payment Mode Activity](https://i.ibb.co/r5t1qMx/Screenshot-20230624-090150.png) | ![Push Notifications](https://i.ibb.co/vJqbLF7/Whats-App-Image-2023-06-24-at-09-58-40.jpg) | ![Admin Order Panel](https://i.ibb.co/PwPcfzB/Whats-App-Image-2023-06-24-at-09-58-41.jpg) |
+
 
 
 ## Instructions
